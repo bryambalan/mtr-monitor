@@ -14,7 +14,7 @@ mkdir /opt/mtr-monitor
 cp -r  * /opt/mtr-monitor/
 chmod a+x /opt/mtr-monitor/*
 
-echo ================== Criado service =======================
+echo ================== Criando service =======================
 
 echo "[Unit]" > /etc/systemd/system/mtr-monitor.service
 echo "Description=MTR-Monitor Cabelo Made4it" >> /etc/systemd/system/mtr-monitor.service
