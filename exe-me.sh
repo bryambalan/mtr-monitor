@@ -26,5 +26,3 @@ echo "[Install]" >> /etc/systemd/system/mtr-monitor.service
 echo "WantedBy=multi-user.target" >> /etc/systemd/system/mtr-monitor.service
 chmod +x /etc/systemd/system/mtr-monitor.service
 systemctl enable mtr-monitor.service
-systemctl start mtr-monitor.service
-systemctl status mtr-monitor.service
