@@ -11,7 +11,7 @@ INFLUXDB_PORT=8086
 
 function monitor_mtr() {
   for MTR_HOST in "${MTR_HOSTS[@]}"; do
-    ( mtr -z -n --report --json --report-cycles $CYCLES $MTR_HOST | ./save_data.py --host $INFLUXDB_HOST --port $INFLUXDB_PORT ) &
+    ( mtr -z -n --report --json --report-cycles $CYCLES $MTR_HOST | /opt/mtr-monitor/save_data.py --host $INFLUXDB_HOST --port $INFLUXDB_PORT ) &
   done
 }
 
