@@ -1,0 +1,471 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Monitoramento grafico do MTR",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "id": 1,
+  "iteration": 1572119998983,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "panels": [],
+      "repeat": "host",
+      "scopedVars": {
+        "host": {
+          "selected": true,
+          "text": "8.8.8.8",
+          "value": "8.8.8.8"
+        }
+      },
+      "title": "Details for $host",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB",
+      "decimals": 2,
+      "description": "",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "hideTimeOverride": false,
+      "id": 23,
+      "isNew": true,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "host": {
+          "selected": true,
+          "text": "8.8.8.8",
+          "value": "8.8.8.8"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_hop",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "hop"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "/^$host$/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"avg\") FROM /^$host$/ WHERE $timeFilter GROUP BY \"hop\"",
+          "rawQuery": true,
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "loss"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hop",
+              "operator": "<>",
+              "value": "01-???"
+            },
+            {
+              "condition": "AND",
+              "key": "hop",
+              "operator": "<>",
+              "value": "02-???"
+            },
+            {
+              "condition": "AND",
+              "key": "hop",
+              "operator": "<>",
+              "value": "01-_gateway"
+            },
+            {
+              "condition": "AND",
+              "key": "hop",
+              "operator": "<>",
+              "value": "02-89-72-16-1.dynamic.chello.pl"
+            },
+            {
+              "condition": "AND",
+              "key": "hop",
+              "operator": "<>",
+              "value": "02-_gateway"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency of each hop to $host",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": false,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "ms",
+          "label": "Loss per host",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "locale",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB",
+      "decimals": 2,
+      "description": "",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "hideTimeOverride": false,
+      "id": 25,
+      "isNew": true,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 7,
+      "points": true,
+      "renderer": "flot",
+      "scopedVars": {
+        "host": {
+          "selected": true,
+          "text": "8.8.8.8",
+          "value": "8.8.8.8"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_hop",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "hop"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "/^$host$/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"loss\") FROM /^$host$/ WHERE $timeFilter GROUP BY \"hop\"",
+          "rawQuery": true,
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "loss"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hop",
+              "operator": "<>",
+              "value": "01-???"
+            },
+            {
+              "condition": "AND",
+              "key": "hop",
+              "operator": "<>",
+              "value": "02-???"
+            },
+            {
+              "condition": "AND",
+              "key": "hop",
+              "operator": "<>",
+              "value": "01-_gateway"
+            },
+            {
+              "condition": "AND",
+              "key": "hop",
+              "operator": "<>",
+              "value": "02-89-72-16-1.dynamic.chello.pl"
+            },
+            {
+              "condition": "AND",
+              "key": "hop",
+              "operator": "<>",
+              "value": "02-_gateway"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Loss % of each hop to $host",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": false,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "percent",
+          "label": "Loss per host",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "locale",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 20,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "8.8.8.8",
+          "value": [
+            "8.8.8.8"
+          ]
+        },
+        "datasource": "InfluxDB",
+        "definition": "show measurements",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Target host",
+        "multi": true,
+        "name": "host",
+        "options": [],
+        "query": "show measurements",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now-1m"
+  },
+  "timepicker": {
+    "hidden": true,
+    "nowDelay": "1m",
+    "refresh_intervals": [
+      "5s"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "MTR Monitor",
+  "uid": "000000001",
+  "version": 8
+}
